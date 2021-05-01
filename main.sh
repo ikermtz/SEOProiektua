@@ -33,7 +33,7 @@
 
 
 #Konstanteen definizioa
-FITX_AUK_MENU="temp/aukera.txt"
+FITX_AUK_MENU="temp/aukerak"
 
 ### Programaren Hasiera ###
 menuAukerapPal=0
@@ -62,7 +62,7 @@ do
 			17 "Irten. :)" \
 			2> $FITX_AUK_MENU
 
-	if test $? -eq 0
+	if test $? -eq 0 
 	then
 		#Erabiltzaileak aukeratutako aukera atera
 		menuAukerapPal=`more $FITX_AUK_MENU`
