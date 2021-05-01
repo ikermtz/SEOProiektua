@@ -45,7 +45,7 @@ do
 			--menu "\n¿Zer egin nahi duzu?:" 20 70 20 \
 			1 "Desinstalatu eta ezabatu dena."\
 			2 "Apache instalatu."\
-			3 "APache abiarazi."\
+			3 "Apache abiarazi."\
 			4 "Apache-ren portua begiratu. (80 portua)"\
 			5 "Ireki index.html"\
 			6 "Sortu web pertsonala."\
