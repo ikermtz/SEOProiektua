@@ -8,24 +8,6 @@
 
 function phpInstalatu()
 {
-#echo "#################### phpInstalatu funtzioa"
-
-#instalatuta php #&> /dev/null
-#if [ "$?" = "0" ]; then
-#	dialog --backtitle "TESTU KONPLEXUTASUNA NEURTZEKO WEB APLIKAZIOA" --title "TESTU KONPLEXUTASUNA" \
-#                --msgbox "PHP INSTALATUKO DA" 10 50
-	
-#	yes | sudo apt install php 
-
-#	dialog --backtitle "TESTU KONPLEXUTASUNA NEURTZEKO WEB APLIKAZIOA" --title "TESTU KONPLEXUTASUNA" \
-#                --msgbox "INSTALATUTA" 10 50
-#else
-#	dialog --backtitle "TESTU KONPLEXUTASUNA NEURTZEKO WEB APLIKAZIOA" --title "TESTU KONPLEXUTASUNA" \
-#                --msgbox "PHP JADANIK INSTALATUTA DAGO" 10 50
-#fi
-
-# service apache2 restart &>/dev/null 
-
 	konprobaketa=`dpkg --get-selections | grep '^php*'` # Konprobatuko du ea instalatuta dagoen php. Eta komando
 	# honen emaitza konprobaketa aldagaian gordeko du.
 	#konprobaketa2=`echo $konprobaketa | grep "sin"` --> Zuazo-k egina, uste dut ez dela behar.
@@ -41,7 +23,6 @@ function phpInstalatu()
 		#sudo apt install php -y
 		konprobaketa=`dpkg --get-selections | grep '^php*'` # Konprobatuko du ea instalatuta dagoen php. Eta komando
 		# honen emaitza konprobaketa aldagaian gordeko du.
-		
 		if [ -n "$konprobaketa" ]
 		then
 			dialog --title "--- PHP ---"\
@@ -94,4 +75,9 @@ function phpInstalatu()
 		#echo -e "libapache2-mod-php jada instalatuta daukazu" 
 	
 	fi
+	echo -e "Orain apache berrabiaraziko da"
+	
+	
+	
+	sudo service apache2 restart
 }
