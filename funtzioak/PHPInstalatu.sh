@@ -26,7 +26,7 @@ function phpInstalatu()
 
 # service apache2 restart &>/dev/null 
 
-konprobaketa=`sudo aptitude show php | grep "Estado:"`
+	konprobaketa=`sudo aptitude show php | grep "Estado:"`
 	konprobaketa2=`echo $konprobaketa | grep "sin"`
 	if [ -n "$konprobaketa2" ]
 	then 
@@ -73,4 +73,9 @@ konprobaketa=`sudo aptitude show php | grep "Estado:"`
 		echo -e "libapache2-mod-php jada instalatuta daukazu" 
 	
 	fi
+	echo -e "Orain apache berrabiaraziko da"
+	
+	
+	
+	sudo service apache2 restart
 }
