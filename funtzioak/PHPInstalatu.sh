@@ -26,51 +26,72 @@ function phpInstalatu()
 
 # service apache2 restart &>/dev/null 
 
-konprobaketa=`sudo aptitude show php | grep "Estado:"`
-	konprobaketa2=`echo $konprobaketa | grep "sin"`
-	if [ -n "$konprobaketa2" ]
+	konprobaketa=`dpkg --get-selections | grep '^php*'` # Konprobatuko du ea instalatuta dagoen php. Eta komando
+	# honen emaitza konprobaketa aldagaian gordeko du.
+	#konprobaketa2=`echo $konprobaketa | grep "sin"` --> Zuazo-k egina, uste dut ez dela behar.
+	if [ -z "$konprobaketa" ] #konprobaketa aldagaian dagoen string-aren length 0 bada... (php ez dago instalatuta)
 	then 
-		echo -e "\nphp paketea instalatuko da"
-		echo -e "Sakatu enter jarraitzeko"
+		dialog --backtitle ""\
+		 --title "--- PHP ---"\
+		 --msgbox "PHP paketea instalatuko da. Sakatu enter jarraitzeko." 10 50
+		#echo -e "\nphp paketea instalatuko da"
+		#echo -e "Sakatu enter jarraitzeko"
 		read
-		sudo apt install php 
+		sudo apt install php -y
 		#sudo apt install php -y
-		konprobaketa=`sudo aptitude show php | grep "Estado:"`
-		konprobaketa2=`echo $konprobaketa | grep "instalado"`
+		konprobaketa=`dpkg --get-selections | grep '^php*'` # Konprobatuko du ea instalatuta dagoen php. Eta komando
+		# honen emaitza konprobaketa aldagaian gordeko du.
 		
-		if [ -n "$konprobaketa2" ]
+		if [ -n "$konprobaketa" ]
 		then
-			echo -e "\nphp paketea instalatu da"
+			dialog --title "--- PHP ---"\
+		 	--msgbox "PHP paketea instalatu egin da." 10 50
+			#echo -e "\nphp paketea instalatu da"
 		else
-			echo -e "\nphp paketea ez da instalatu"
+			dialog --title "--- PHP ---"\
+		 	--msgbox "PHP paketea ez da instalatu. Arazo bat egon da." 10 50
+			#echo -e "\nphp paketea ez da instalatu"
 		fi
 	else
-		echo -e "\nphp paketea instalatuta dago "
+		dialog --title "--- PHP ---"\
+		 --msgbox "PHP paketea instalatuta dago!" 10 50
 	
 	fi
-	echo -e "Sakatu enter jarraitzeko eta libapache instalatzeko"
-	read
+	#dialog --title "--- libapache ---"\
+	#	 --msgbox "Konprobatzen ea libapache instalatuta duzun edo ez..." 10 50
+	#echo -e "Sakatu enter jarraitzeko eta libapache instalatzeko"
+	
 	
 	#libapache2-mod-php paketea instalatu
-	konprobaketa=`sudo aptitude show libapache2-mod-php | grep "Estado:"`
-	konprobaketa2=`echo $konprobaketa | grep "sin"`
+	konprobaketa=`dpkg --get-selections | grep 'libapache2'`
+	#konprobaketa=`sudo aptitude show libapache2-mod-php | grep ":"`
+	#konprobaketa2=`echo $konprobaketa | grep "sin"`
 	
-	if [ -n "$konprobaketa2" ]
+	if [ -z "$konprobaketa" ]
 	then
-		echo -e "libapache2-mod-php paketea instalatuko da"
-		echo -e "Sakatu enter jarraitzeko"
-		read
+		dialog --title "-- libapache --"\
+		 --msgbox "Sakatu enter jarraitzeko eta libapache instalatzeko." 10 50
+		
+		#echo -e "libapache2-mod-php paketea instalatuko da"
+		#echo -e "Sakatu enter jarraitzeko"
+		read # ENTER sakatzean irakurriko du.
 		sudo apt install libapache2-mod-php
-		konprobaketa=`sudo aptitude show libapache2-mod-php | grep "Estado:"`
-		konprobaketa2=`echo $konprobaketa | grep "instalado"`
-		if [ -n "$konprobaketa2" ]
+		konprobaketa=`dpkg --get-selections | grep libapache2-mod-php`
+
+		if [ -n "$konprobaketa" ]
 		then 
-			echo -e "\nlibapache instalatu egin da"
+			dialog --title "-- libapache --"\
+		 	--msgbox "libapache instalatu egin da. " 10 50
+			#echo -e "\nlibapache instalatu egin da"
 		else
-			echo -e "\nlibapache ez da instalatu"
+			dialog --title "-- libapache --"\
+		 	--msgbox "libapache ez da instalatu, arazo bat egon da. " 10 50
+			#echo -e "\nlibapache ez da instalatu"
 		fi
 	else
-		echo -e "libapache2-mod-php jada instalatuta daukazu" 
+		dialog --title "-- libapache --"\
+		 --msgbox "libapache2-mod-php jada instalatuta daukazu." 10 50
+		#echo -e "libapache2-mod-php jada instalatuta daukazu" 
 	
 	fi
 }
