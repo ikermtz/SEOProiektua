@@ -80,7 +80,7 @@ do
 			6) sortuWebPertsonala;;
 			7) sortuWebOstatu;;
 			8) apache8080PortuaBegiratu;;
-			9) PHPInstalatu ;;
+			9) phpInstalatu ;;
 			10) PHPTestatu ;;
 			11) phpBB3Instalatu ;;
 			12) PythonInstalatu ;;
