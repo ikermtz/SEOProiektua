@@ -1,4 +1,4 @@
-function desinstalazioa() #
+function desinstalazioa() #Sistema hasieran zegoen bezala utziko du.
 {
-	//TODO
+	
 }
