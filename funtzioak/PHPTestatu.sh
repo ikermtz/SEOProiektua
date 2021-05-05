@@ -2,13 +2,15 @@
 
 
 ###########################################################
-#   6) PHP TESTEATU
+#   PHP TESTEATU
 ###########################################################
 
-#Aukera hau soilik egin dezakezu Apache instalatuta badago.
-#Konprobatu egingo dugu
+
 function PHPTestatu()
 {
+
+	#Aukera hau soilik egin dezakezu Apache instalatuta badago.
+#Konprobatu egingo dugu
 	konprobaketa=`dpkg --get-selections | grep apache`
 	if [ -n "$konprobaketa" ] #aldagaian string-aren luzera 0 ez 	bada..Apache instalatuta egongo da
 	then 
