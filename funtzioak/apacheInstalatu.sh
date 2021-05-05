@@ -42,5 +42,5 @@ function apacheInstalatu(){
 		 --msgbox "Apache instalatuta dago!" 10 50
 
 	fi
-
+	#quintano daun
 }
