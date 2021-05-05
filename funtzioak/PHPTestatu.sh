@@ -35,10 +35,23 @@ function PHPTestatu()
 						sudo chgrp www-data /var/www/html/test.php
 					
 					fi
+					
+					#Begiratu behar dugu ea nonra begiratzen dago Apache
+					portua=`sudo netstat -anp | grep -E '80.*apache'`
+					
+					if [ -n "$portua" ]
+					then
+					
 					dialog --title "-- PHP TESTEATU --"\
 		 			--msgbox "Sakatu enter Firefox irekitzeko" 10 50
 					firefox http://localhost:80/test.php
 					
+					else
+						dialog --title "-- PHP TESTEATU --"\
+		 			--msgbox "Sakatu enter Firefox irekitzeko,8080 portutik" 10 50
+		 				firefox http://localhost:8080/test.php
+					
+					fi
 				else
 					dialog --backtitle ""\
 		 		--title "--- PHP TESTEATU ---"\
