@@ -21,6 +21,8 @@ function PythonInstalatu()
 		 
 		 read
 		 sudo apt-get install virtualenv -y
+		 sudo apt-get install python3-virtualenv -y
+
 		
 		konprobaketa=`dpkg --get-selections | grep virtualenv` 
 		if [ -n "$konprobaketa" ]
