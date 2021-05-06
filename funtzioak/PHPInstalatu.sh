@@ -1,4 +1,5 @@
-#!/bin/bash
+#! /usr/bin/bash  --> Hashtag harridurareb ostean zure bin-aren
+#						path-a jarri (zein de ikusteko => which bash)
 
 ###########################################################
 #   5) PHP INSTALATU                       

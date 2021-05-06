@@ -40,7 +40,7 @@ menuAukerapPal=0
 
 while test $menuAukerapPal -ne 17
 do
-	#Menua bistaratu
+	#Menua bistaratu	
 	dialog --backtitle "Web Aplikazioen Instalazioa 2021 - SEO" --title "Web Aplikazioen Instalazioa" \
 			--menu "\n¿Zer egin nahi duzu?:" 20 70 20 \
 			1 "Desinstalatu eta ezabatu dena."\
