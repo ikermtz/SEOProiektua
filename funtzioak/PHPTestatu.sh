@@ -41,17 +41,23 @@ function PHPTestatu()
 					#Begiratu behar dugu ea nonra begiratzen dago Apache
 					portua=`sudo netstat -anp | grep -E '80.*apache'`
 					
+					ipFiltratugabe=$(ip addr | grep -E "inet .*brd")
+  					ipIaFiltratua=$(echo ${ipFiltratugabe:9:50})
+  					ip=$(echo $ipIaFiltratua | cut -d"/" -f1)
+					
+					
 					if [ -n "$portua" ]
 					then
 					
 					dialog --title "-- PHP TESTEATU --"\
 		 			--msgbox "Sakatu enter Firefox irekitzeko" 10 50
-					firefox http://localhost:80/test.php
+		 			
+					firefox http://"$ip":80/test.php
 					
 					else
 						dialog --title "-- PHP TESTEATU --"\
 		 			--msgbox "Sakatu enter Firefox irekitzeko,8080 portutik" 10 50
-		 				firefox http://localhost:8080/test.php
+		 				firefox http://"$ip":8080/test.php
 					
 					fi
 				else

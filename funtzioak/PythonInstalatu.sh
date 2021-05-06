@@ -39,6 +39,9 @@ function PythonInstalatu()
 	#python-virtualenv instalatu beharrezkoa izanez gero
 	#sudo apt-get install python-virtualenv -y
 	
+	#if [  ]
+	
+	
 	#Python3-rako ingurune birtual bat sortu
 	#sudo virtualenv --python=python3 /var/www/html/python3 &> /dev/null
 	
