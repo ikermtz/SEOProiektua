@@ -97,4 +97,5 @@ do
 done #ppal buklearen amaiera
 
 echo "Programa amaituta." 
+clear
 exit 0 #Programaren amaiera.
