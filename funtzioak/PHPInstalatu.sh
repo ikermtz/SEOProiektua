@@ -4,7 +4,7 @@
 ###########################################################
 #   5) PHP INSTALATU                       
 ###########################################################
-
+#gonalo
 #source "$(dirname "$0")/funtzioak/instalatuta.sh"
 
 function phpInstalatu()
