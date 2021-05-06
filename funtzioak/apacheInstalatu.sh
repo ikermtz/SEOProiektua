@@ -29,7 +29,7 @@ function apacheInstalatu(){
 		 --msgbox "Apache instalatuko da" 10 50
 		# --yesno "Apache ez dago instalatuta, instalatu nahi duzu?" 10 50
 		read
-		apt install apache2 -y
+		sudo apt install apache2 -y
 		#erantzuna=$?
 		#case $erantzuna in
 		#	0) sudo apt install apache2 -y;;
@@ -45,7 +45,7 @@ function apacheInstalatu(){
 			dialog --title "Apache Instalatu"\
 		 --msgbox "Apache instalatuko da!" 10 50
 			read 
-			apt install apache2 -y	
+			sudo apt install apache2 -y	
 		fi
 	fi
 
@@ -54,10 +54,11 @@ function apacheInstalatu(){
 	if [ -n "$konprobaketa" ] # Prozesuaren osteko konprobazioa
 		then
 			dialog --title "--- Apache ---"\
-		 	--msgbox "Apache2 paketea instalatu egin da." 10 50
+		 	--msgbox "Apache2 paketea ez da instalatu. Arazo bat egon da." 10 50
+			
 		else
 			dialog --title "--- Apache ---"\
-		 	--msgbox "Apache2 paketea ez da instalatu. Arazo bat egon da." 10 50
+		 	--msgbox "Apache2 paketea instalatu egin da." 10 50
 	fi
 
 }
