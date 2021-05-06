@@ -37,6 +37,7 @@ function PythonInstalatu()
 	fi
 	
 	#python-virtualenv instalatu beharrezkoa izanez gero
+	#:)
 	
 	
 	konprobaketa=`dpkg --get-selections | grep 'python3-virtualenv'`
