@@ -20,7 +20,7 @@ function apacheInstalatu(){
 	#ins=$(konprobatu)
 	#echo "$ins"
 	konprobatu =`dpkg --get-selections | grep '^apache*'`
-	konprobaDe =`dpkg --get-selections | grep '^deinstall*'`
+	konprobaDe =`dpkg --get-selections | grep '^apache.*deinstall$'`
 	#quintano gitano redaun
 	if [ -z "$konprobatu" ] # -z comprueba si el tamaño es 0 // -n si no es 0
 	then
@@ -50,7 +50,7 @@ function apacheInstalatu(){
 	fi
 
 	konprobatu =`dpkg --get-selections | grep '^apache*'`
-	konprobaDe =`dpkg --get-selections | grep '^deinstall*'`
+	konprobaDe =`dpkg --get-selections | grep '^apache.*deinstall$'`
 	if [ -n "$konprobaketa" ] # Prozesuaren osteko konprobazioa
 		then
 			dialog --title "--- Apache ---"\
