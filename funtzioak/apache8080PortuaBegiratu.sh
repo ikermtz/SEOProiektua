@@ -4,8 +4,7 @@ function apache8080PortuaBegiratu(){
 
 	if [ -z "$badago" ]
 	then
-		echo pito
-		sudo sed '4iListen 8080' /etc/apache2/ports.conf > /etc/apache2/ports.conf
+		sed '4iListen 8080' /etc/apache2/ports.conf | sudo tee /etc/apache2/ports.conf > /dev/null
 
 		sudo systemctl restart apache2
 	fi;
