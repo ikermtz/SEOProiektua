@@ -49,8 +49,8 @@ function apacheInstalatu(){
 		fi
 	fi
 
-	echo eta
-
+	konprobatu =`dpkg --get-selections | grep '^apache*'`
+	konprobaDe =`dpkg --get-selections | grep '^deinstall*'`
 	if [ -n "$konprobaketa" ] # Prozesuaren osteko konprobazioa
 		then
 			dialog --title "--- Apache ---"\

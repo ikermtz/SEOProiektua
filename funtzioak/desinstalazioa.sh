@@ -18,17 +18,37 @@ function desinstalazioa(){
 
 	read
 
+	sudo apt-get remove  -y
+	dialog --backtitle ""\
+		--title "PHP"\
+		--msgbox "PHPko paketak desinstalatu dira" 10 50
+	read
+
+	sudo apt-get remove  -y
+	dialog --backtitle ""\
+		--title "PHPbb3"\
+		--msgbox "PHPbb3ko paketak desinstalatu dira" 10 50
+	read
+
 	sudo apt-get remove apache2* -y
 	dialog --backtitle ""\
 		--title "Apache2"\
 		--msgbox "Apacheko paketak desinstalatu dira" 10 50
 	read
 
-
-
-
+	sudo apt-get remove  -y
 	dialog --backtitle ""\
-		--title "Sakatu"\
-		--msgbox "Hemen komandoka joango ziren" 10 50
+		--title "Searx"\
+		--msgbox "Searxeko paketak desinstalatu dira" 10 50
+	read
+
+	sudo apt-get remove --auto-remove python3-virtualenv -y
+	dialog --backtitle ""\
+		--title "Python3 eta Virtualenv"\
+		--msgbox "Python ingurune birtuala desinstalatu da" 10 50
+	read
+
+
+
 
 }
