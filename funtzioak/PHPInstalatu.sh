@@ -9,45 +9,44 @@
 
 function phpInstalatu()
 {
-	konprobaketa=`dpkg --get-selections | grep '^php*'` # Konprobatuko du ea instalatuta dagoen php. Eta komando
-	# honen emaitza konprobaketa aldagaian gordeko du.
-	#konprobaketa2=`echo $konprobaketa | grep "sin"` --> Zuazo-k egina, uste dut ez dela behar.
+	#Bi aldagaien PHP-ren paketeak konprobatzeko
+	konprobaketa=`dpkg --get-selections | grep '^php*'`
+	konprobaketaDe=`dpkg --get-selections | grep '^php.*deinstall$'`
+
 	if [ -z "$konprobaketa" ] #konprobaketa aldagaian dagoen string-aren length 0 bada... (php ez dago instalatuta)
-	then 
-		dialog --backtitle ""\
-		 --title "--- PHP ---"\
+	then	#Hutsik badago => Ez dago PHP paketerik
+		dialog --backtitle "PHP Instalatu"\
+		 --title "Instalazioa"\
 		 --msgbox "PHP paketea instalatuko da. Sakatu enter jarraitzeko." 10 50
-		#echo -e "\nphp paketea instalatuko da"
-		#echo -e "Sakatu enter jarraitzeko"
+
 		read
 		sudo apt install php -y
-		#sudo apt install php -y
-		konprobaketa=`dpkg --get-selections | grep '^php*'` # Konprobatuko du ea instalatuta dagoen php. Eta komando
-		# honen emaitza konprobaketa aldagaian gordeko du.
-		if [ -n "$konprobaketa" ]
+
+	else	# Hutsik ez badago => Badaude PHP paketeak
+		if [ -n "$konprobaketaDe" ] #
 		then
-			dialog --title "--- PHP ---"\
-		 	--msgbox "PHP paketea instalatu egin da." 10 50
-			#echo -e "\nphp paketea instalatu da"
-		else
-			dialog --title "--- PHP ---"\
-		 	--msgbox "PHP paketea ez da instalatu. Arazo bat egon da." 10 50
-			#echo -e "\nphp paketea ez da instalatu"
-		fi
-	else
-		dialog --title "--- PHP ---"\
-		 --msgbox "PHP paketea instalatuta dago!" 10 50
+			dialog --
 	
 	fi
-	#dialog --title "--- libapache ---"\
-	#	 --msgbox "Konprobatzen ea libapache instalatuta duzun edo ez..." 10 50
-	#echo -e "Sakatu enter jarraitzeko eta libapache instalatzeko"
+
+	konprobaketa=`dpkg --get-selections | grep '^php*'` # Konprobatuko du ea instalatuta dagoen php. Eta komando
+	# honen emaitza konprobaketa aldagaian gordeko du.
+	if [ -n "$konprobaketa" ]
+	then
+		dialog --title "--- PHP ---"\
+	 	--msgbox "PHP paketea instalatu egin da." 10 50
+			
+	else
+		dialog --title "--- PHP ---"\
+	 	--msgbox "PHP paketea ez da instalatu. Arazo bat egon da." 10 50
+		
+	fi
+
 	
 	
 	#libapache2-mod-php paketea instalatu
-	konprobaketa=`dpkg --get-selections | grep 'libapache2'`
-	#konprobaketa=`sudo aptitude show libapache2-mod-php | grep ":"`
-	#konprobaketa2=`echo $konprobaketa | grep "sin"`
+	konprobaketaL=`dpkg --get-selections | grep 'libapache2'`
+	konprobaketaLDe=`dpkg --get-selections | grep 'libapache.*deinstall$'`
 	
 	if [ -z "$konprobaketa" ]
 	then

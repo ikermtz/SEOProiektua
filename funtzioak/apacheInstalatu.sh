@@ -16,49 +16,53 @@ function apacheInstalatu(){
 	dialog --backtitle "Apache Instalatu"\
 	 --title "Menu"\
 	 --msgbox "Apacheren egoera konprobatzen..." 10 50
-	#echo "kaixo2"
-	#ins=$(konprobatu)
-	#echo "$ins"
-	konprobatu =`dpkg --get-selections | grep '^apache*'`
-	konprobaDe =`dpkg --get-selections | grep '^apache.*deinstall$'`
-	#quintano gitano redaun
-	if [ -z "$konprobatu" ] # -z comprueba si el tamaño es 0 // -n si no es 0
-	then
+
+	#dpkg-ren bidez paketeak begriratuko ditugu, grep-ekin flitratuz. Hau, konpr aldagaietan gordez
+	konprobatu=`dpkg --get-selections | grep '^apache*'`
+	konprobaDe=`dpkg --get-selections | grep '^apache.*deinstall$'`
+	konpro01=0
+	
+	if [ -z "$konprobatu" ] # -z ren bidez konprobatu hutsa den bergiratzen da
+	then	# Hutsik Badago => Ez dago apache paketerik
 		dialog --backtitle "Apache Instalatu"\
 		 --title "Instalazioa"\
-		 --msgbox "Apache instalatuko da" 10 50
+		 --msgbox "Apache instalatuko da. Sakatu enter jarraitzeko." 10 50
 		# --yesno "Apache ez dago instalatuta, instalatu nahi duzu?" 10 50
 		read
 		sudo apt install apache2 -y
-		#erantzuna=$?
-		#case $erantzuna in
-		#	0) sudo apt install apache2 -y;;
-		#	1) echo "bale crac";;
-		#	255) echo "pos vale sunormal";;
-		#esac
-	else
-		if [ -z "$konprobaDe" ]
-		then
-			dialog --title "Instalatuta"\
-		 --msgbox "Apache instalatuta dago!" 10 50
-		else
+
+	else	# Hutsik ez badago => Badaude apache paketeak
+		if [ -n "$konprobaDe" ]	# -n ren bidez konprobaDe hutsik ez dagoen begiratu
+		then	# Ez dago hutsikn => Paketeak daude baina desinstalatuta
 			dialog --title "Apache Instalatu"\
-		 --msgbox "Apache instalatuko da!" 10 50
+		 	--msgbox "Apache instalatuko da. Sakatu enter jarraitzeko." 10 50
 			read 
 			sudo apt install apache2 -y	
+		else
+			dialog --title "Apache Instalatuta"\
+		 	--msgbox "Dagoeneko Apache instalatuta zenuen" 10 50
 		fi
+
+
 	fi
 
-	konprobatu =`dpkg --get-selections | grep '^apache*'`
-	konprobaDe =`dpkg --get-selections | grep '^apache.*deinstall$'`
+	#Amaierako konprobazioak, ea instalazioak ondo joan diren
+	konprobatu=`dpkg --get-selections | grep '^apache*'`
+	konprobaDe=`dpkg --get-selections | grep '^apache.*deinstall$'`
 	if [ -n "$konprobaketa" ] # Prozesuaren osteko konprobazioa
-		then
+	then	#Ez dago hutsik k1
+		if [ -n "$konprobaDe" ]	# -n ren bidez konprobaDe hutsik ez dagoen begiratu
+		then	# Ez dago hutsik k2
 			dialog --title "--- Apache ---"\
 		 	--msgbox "Apache2 paketea ez da instalatu. Arazo bat egon da." 10 50
-			
-		else
+		else	# Hutsik dago k2
 			dialog --title "--- Apache ---"\
-		 	--msgbox "Apache2 paketea instalatu egin da." 10 50
+			--msgbox "Apache2 paketea ondo instalatu da." 10 50
+		fi
+
+	else	#Hutsik dago k1
+		dialog --title "--- Apache ---"\
+	 	--msgbox "Apache2 paketea ez da instalatu. Arazo bat egon da." 10 50
 	fi
 
 }
