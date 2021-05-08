@@ -49,7 +49,7 @@ function apacheInstalatu(){
 	#Amaierako konprobazioak, ea instalazioak ondo joan diren
 	konprobatu=`dpkg --get-selections | grep '^apache*'`
 	konprobaDe=`dpkg --get-selections | grep '^apache.*deinstall$'`
-	if [ -n "$konprobaketa" ] # Prozesuaren osteko konprobazioa
+	if [ -z "$konprobaketa" ] # Prozesuaren osteko konprobazioa
 	then	#Ez dago hutsik k1
 		if [ -n "$konprobaDe" ]	# -n ren bidez konprobaDe hutsik ez dagoen begiratu
 		then	# Ez dago hutsik k2
@@ -62,7 +62,7 @@ function apacheInstalatu(){
 
 	else	#Hutsik dago k1
 		dialog --title "--- Apache ---"\
-	 	--msgbox "Apache2 paketea ez da instalatu. Arazo bat egon da." 10 50
+	 	--msgbox "Apache2 paketea ez da instalatu.vxcv Arazo bat egon da." 10 50
 	fi
 
 }
