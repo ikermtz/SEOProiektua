@@ -11,11 +11,12 @@ function PythonInstalatu()
 {
 
 	#konprobatu behar dugu virtualenv instalatuta dagoen edo ez
-	konprobaketa=`dpkg --get-selections | grep virtualenv`
+	konprobaketa=`dpkg --get-selections | grep '^.*virtualenv*'`
+	konprobaDe=`dpkg --get-selections | grep '^.*virtualenv.*deinstall$'`
 	
 	if [ -z "$konprobaketa" ] #ez dagola instalatuta
 	then 
-		dialog --backtitle ""\
+		dialog --backtitle "Python Virtualenv Instalatu"\
 		 --title "--- PYTHON ---"\
 		 --msgbox "Python paketea instalatuko da. Sakatu enter jarraitzeko" 10 50
 		 

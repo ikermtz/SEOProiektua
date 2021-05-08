@@ -1,3 +1,5 @@
+#! /usr/bin/bash
+
 konprobatu(){
 	egoera=$(dpkg --get-selections | grep phpbb3)
 

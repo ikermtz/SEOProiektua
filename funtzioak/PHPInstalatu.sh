@@ -1,4 +1,4 @@
-#! /usr/bin/bash  --> Hashtag harridurareb ostean zure bin-aren
+#! /usr/bin/bash  --> Hashtag harriduraren ostean zure bin-aren
 #						path-a jarri (zein de ikusteko => which bash)
 
 ###########################################################
@@ -24,60 +24,84 @@ function phpInstalatu()
 
 	else	# Hutsik ez badago => Badaude PHP paketeak
 		if [ -n "$konprobaketaDe" ] #
-		then
-			dialog --
+		then	# Ez dago hutsik => Pakteak daude baina desinstalatuta
+			dialog --title "PHP Instalatu"\
+			--msgbox "PHP instalatuko da. Sakatu enter jarraitzeko." 10 50
+			read
+			sudo apt install php -y
+		else
+			dialog --title "PHP Instalatuta"\
+			--msgbox "Dagoeneko PHP instalatuta zenuen" 10 50
+		fi
 	
 	fi
-
-	konprobaketa=`dpkg --get-selections | grep '^php*'` # Konprobatuko du ea instalatuta dagoen php. Eta komando
-	# honen emaitza konprobaketa aldagaian gordeko du.
-	if [ -n "$konprobaketa" ]
-	then
-		dialog --title "--- PHP ---"\
-	 	--msgbox "PHP paketea instalatu egin da." 10 50
-			
-	else
-		dialog --title "--- PHP ---"\
-	 	--msgbox "PHP paketea ez da instalatu. Arazo bat egon da." 10 50
-		
-	fi
-
-	
 	
 	#libapache2-mod-php paketea instalatu
 	konprobaketaL=`dpkg --get-selections | grep 'libapache2'`
 	konprobaketaLDe=`dpkg --get-selections | grep 'libapache.*deinstall$'`
 	
-	if [ -z "$konprobaketa" ]
+	if [ -z "$konprobaketaL" ]
 	then
-		dialog --title "-- libapache --"\
+		dialog --title "Libapache Instalatu"\
 		 --msgbox "Sakatu enter jarraitzeko eta libapache instalatzeko." 10 50
-		
-		#echo -e "libapache2-mod-php paketea instalatuko da"
-		#echo -e "Sakatu enter jarraitzeko"
-		read # ENTER sakatzean irakurriko du.
-		sudo apt install libapache2-mod-php
-		konprobaketa=`dpkg --get-selections | grep libapache2-mod-php`
 
-		if [ -n "$konprobaketa" ]
-		then 
-			dialog --title "-- libapache --"\
-		 	--msgbox "libapache instalatu egin da. " 10 50
-			#echo -e "\nlibapache instalatu egin da"
-		else
-			dialog --title "-- libapache --"\
-		 	--msgbox "libapache ez da instalatu, arazo bat egon da. " 10 50
-			#echo -e "\nlibapache ez da instalatu"
-		fi
+		read # ENTER sakatzean irakurriko du.
+		sudo apt install libapache2-mod-php -y
+		
 	else
-		dialog --title "-- libapache --"\
-		 --msgbox "libapache2-mod-php jada instalatuta daukazu." 10 50
-		#echo -e "libapache2-mod-php jada instalatuta daukazu" 
+		if [ -n "$konprobaketaLDe" ] #
+		then	# Ez dago hutsik => Pakteak daude baina desinstalatuta
+			dialog --title "Libapache Instalatu"\
+			--msgbox "Libapache instalatuko da. Sakatu enter jarraitzeko." 10 50
+			read
+			sudo apt install libapache2-mod-php -y
+		else
+			dialog --title "PHP Instalatuta"\
+			--msgbox "Dagoeneko Libapache instalatuta zenuen" 10 50
+		fi
 	
 	fi
+
+	#Konprobazioak
+	konprobaketa=`dpkg --get-selections | grep '^php*'`
+	konprobaketaDe=`dpkg --get-selections | grep '^php.*deinstall$'`
+	
+	if [ -z "$konprobaketa" ] # Prozesuaren osteko konprobazioa
+	then	#Ez dago hutsik k1
+		if [ -n "$konprobaDe" ]	# -n ren bidez konprobaDe hutsik ez dagoen begiratu
+		then	# Ez dago hutsik k2
+			dialog --title "--- PHP ---"\
+		 	--msgbox "PHP paketea ez da instalatu. Arazo bat egon da." 10 50
+		else	# Hutsik dago k2
+			dialog --title "--- PHP ---"\
+			--msgbox "PHP paketea ondo instalatu da." 10 50
+		fi
+
+	else	#Hutsik dago k1
+		dialog --title "--- PHP ---"\
+	 	--msgbox "PHP paketea ez da instalatu. Arazo bat egon da." 10 50
+	fi
+	
+	konprobaketaL=`dpkg --get-selections | grep 'libapache2'`
+	konprobaketaLDe=`dpkg --get-selections | grep 'libapache.*deinstall$'`
+	
+	if [ -z "$konprobaketaL" ] # Prozesuaren osteko konprobazioa
+	then	#Ez dago hutsik k1
+		if [ -n "$konprobaLDe" ]	# -n ren bidez konprobaDe hutsik ez dagoen begiratu
+		then	# Ez dago hutsik k2
+			dialog --title "--- LibApache ---"\
+		 	--msgbox "Libapache paketea ez da instalatu. Arazo bat egon da." 10 50
+		else	# Hutsik dago k2
+			dialog --title "--- Libpache ---"\
+			--msgbox "Libapache paketea ondo instalatu da." 10 50
+		fi
+
+	else	#Hutsik dago k1
+		dialog --title "--- Apache ---"\
+	 	--msgbox "Libapache paketea ez da instalatu. Arazo bat egon da." 10 50
+	fi
+
 	echo -e "Orain apache berrabiaraziko da"
-	
-	
-	
+
 	sudo service apache2 restart
 }
