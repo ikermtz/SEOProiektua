@@ -17,7 +17,7 @@ function apacheInstalatu(){
 		 --msgbox "Apache instalatuko da. Sakatu enter jarraitzeko." 10 50
 		# --yesno "Apache ez dago instalatuta, instalatu nahi duzu?" 10 50
 		read
-		sudo apt install apache2 -y
+		sudo apt install apache2 -y > /dev/null
 
 	else	# Hutsik ez badago => Badaude apache paketeak
 		if [ -n "$konprobaDe" ]	# -n ren bidez konprobaDe hutsik ez dagoen begiratu
@@ -25,7 +25,7 @@ function apacheInstalatu(){
 			dialog --title "Apache Instalatu"\
 		 	--msgbox "Apache instalatuko da. Sakatu enter jarraitzeko." 10 50
 			read 
-			sudo apt install apache2 -y	
+			sudo apt install apache2 -y > /dev/null
 		else
 			dialog --title "Apache Instalatuta"\
 		 	--msgbox "Dagoeneko Apache instalatuta zenuen" 10 50
@@ -50,7 +50,7 @@ function apacheInstalatu(){
 
 	else	#Hutsik dago k1
 		dialog --title "--- Apache ---"\
-	 	--msgbox "Apache2 paketea ez da instalatu.vxcv Arazo bat egon da." 10 50
+	 	--msgbox "Apache2 paketea ez da instalatu. Arazo bat egon da." 10 50
 	fi
 
 }

@@ -20,7 +20,7 @@ function phpInstalatu()
 		 --msgbox "PHP paketea instalatuko da. Sakatu enter jarraitzeko." 10 50
 
 		read
-		sudo apt install php -y
+		sudo apt install php -y > /dev/null
 
 	else	# Hutsik ez badago => Badaude PHP paketeak
 		if [ -n "$konprobaketaDe" ] #
@@ -28,7 +28,7 @@ function phpInstalatu()
 			dialog --title "PHP Instalatu"\
 			--msgbox "PHP instalatuko da. Sakatu enter jarraitzeko." 10 50
 			read
-			sudo apt install php -y
+			sudo apt install php -y > /dev/null
 		else
 			dialog --title "PHP Instalatuta"\
 			--msgbox "Dagoeneko PHP instalatuta zenuen" 10 50
@@ -46,7 +46,7 @@ function phpInstalatu()
 		 --msgbox "Sakatu enter jarraitzeko eta libapache instalatzeko." 10 50
 
 		read # ENTER sakatzean irakurriko du.
-		sudo apt install libapache2-mod-php -y
+		sudo apt install libapache2-mod-php -y > /dev/null
 		
 	else
 		if [ -n "$konprobaketaLDe" ] #
@@ -54,7 +54,7 @@ function phpInstalatu()
 			dialog --title "Libapache Instalatu"\
 			--msgbox "Libapache instalatuko da. Sakatu enter jarraitzeko." 10 50
 			read
-			sudo apt install libapache2-mod-php -y
+			sudo apt install libapache2-mod-php -y > /dev/null
 		else
 			dialog --title "PHP Instalatuta"\
 			--msgbox "Dagoeneko Libapache instalatuta zenuen" 10 50
@@ -103,5 +103,5 @@ function phpInstalatu()
 
 	echo -e "Orain apache berrabiaraziko da"
 
-	sudo service apache2 restart
+	sudo service apache2 restart > /dev/null
 }

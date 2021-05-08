@@ -18,7 +18,7 @@ function desinstalazioa(){
 
 	read
 
-	#sudo apt-get remove  -y
+	sudo apt-get purge php* -y > /dev/null
 	dialog --backtitle ""\
 		--title "PHP"\
 		--msgbox "PHPko paketak desinstalatu dira" 10 50
@@ -30,7 +30,7 @@ function desinstalazioa(){
 		--msgbox "PHPbb3ko paketak desinstalatu dira" 10 50
 	read
 
-	sudo apt-get remove apache2* -y
+	sudo apt-get remove apache2* -y > /dev/null
 	dialog --backtitle ""\
 		--title "Apache2"\
 		--msgbox "Apacheko paketak desinstalatu dira" 10 50
@@ -42,7 +42,7 @@ function desinstalazioa(){
 		--msgbox "Searxeko paketak desinstalatu dira" 10 50
 	read
 
-	sudo apt-get remove --auto-remove python3-virtualenv -y #Konprobatuta desins
+	sudo apt-get remove --auto-remove python3-virtualenv -y > /dev/null #Konprobatuta desins
 	dialog --backtitle ""\
 		--title "Python3 eta Virtualenv"\
 		--msgbox "Python ingurune birtuala desinstalatu da" 10 50
