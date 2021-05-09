@@ -25,16 +25,16 @@ function searxInstalatu ()
 		 --msgbox "SEARX paketea instalatuko da. Sakatu enter jarraitzeko." 10 50
 
 		read
-		sudo apt install searx -y > /dev/null
+		sudo apt-get install searx -y > /dev/null
 
 
 	else
-		if [ -n "konprobaDe" ]
+		if [ -n "$konprobaDe" ]
 		then
 			dialog --title "Searx Instalatu"\
 			--msgbox "Searx instalatuko da. Sakatu enter jarraitzeko." 10 50
 			read
-			sudo apt install searx -y > /dev/null
+			sudo apt-get install searx -y > /dev/null
 		else
 			dialog --title "Searx Instalatuta"\
 			--msgbox "Dagoeneko Searx instalatuta zenuen" 10 50
@@ -57,6 +57,6 @@ function searxInstalatu ()
 
 	else	#Hutsik dago k1
 		dialog --title "--- Searx ---"\
-	 	--msgbox "SEARX paketea ez da instalatu.vxcv Arazo bat egon da." 10 50
+	 	--msgbox "SEARX paketea ez da instalatu. Arazo bat egon da." 10 50
 	fi
 }
