@@ -22,7 +22,7 @@ function phpBB3Instalatu(){
 		#PHPBB3 zip fitxategia deskargatu eta deskonprimatu
 		wget https://download.phpbb.com/pub/release/3.3/3.3.3/phpBB-3.3.3.zip 
 		unzip phpBB-3.3.3.zip
-		#/var/www/ direktorioan "foroak" karpeta sortu eta bertara mugitu phpBB3-ko fitxategi guztiak
+		#/var/www/ direktorioan "foroak" karpeta sortu eta mugitu phpBB3-ko fitxategi guztiak
 		sudo mkdir /var/www/foroak
 		sudo mv phpBB3/* /var/www/foroak/
 		sudo mv phpBB3/* /var/www/foroak/
@@ -43,17 +43,16 @@ function phpBB3Instalatu(){
 
 	else 
 		if[ -n "$egoeraDe" ]
-		then 
-
-			#ez dago hutsik, paketeak desinstalatuta daude
-			dialog --title "phpBB3 Instalatu"\
+		then #ez dago hutsik paketeak desinstalatuta daude
+			dialog --backtitle "phpBB3 Instalatu"\
+			--title "Instalazioa"
 			--msgbox "PHPBB3 paketea instalatuko da. Sakatu enter jarraitzeko" 10 50
 
 			read 
 			#PHPBB3 zip fitxategia deskargatu eta deskonprimatu
 			wget https://download.phpbb.com/pub/release/3.3/3.3.3/phpBB-3.3.3.zip 
 			unzip phpBB-3.3.3.zip
-			#/var/www/ direktorioan "foroak" karpeta sortu eta bertara mugitu phpBB3-ko fitxategi guztiak
+			#/var/www/ direktorioan "foroak" karpeta sortu eta mugitu phpBB3-ko fitxategi guztiak
 			sudo mkdir /var/www/foroak
 			sudo mv phpBB3/* /var/www/foroak/
 			sudo mv phpBB3/* /var/www/foroak/
