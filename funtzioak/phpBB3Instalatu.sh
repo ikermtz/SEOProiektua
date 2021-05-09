@@ -1,14 +1,13 @@
 #! /usr/bin/bash
 
-
-#! usr/bin/bash
-
 ###########################################################
 #   11) PHPBB3 instalatu.
 ###########################################################
 
-
+	
 function phpBB3Instalatu(){
+
+	echo "sudadon"
 	egoera= `dpkg --get-selections | grep '^phpBB*'`
 	egoeraDe= `dpkg --get-selections | grep '^phpBB.*deinstall$'`
 

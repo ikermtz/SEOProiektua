@@ -82,7 +82,7 @@ do
 			8) apache8080PortuaBegiratu;;
 			9) phpInstalatu ;;
 			10) PHPTestatu ;;
-			11) phpBB3Instalatu ;;
+			11) phpBB3Instalatu;;
 			12) PythonInstalatu ;;
 			13) searxHasieratu ;; # searx erabiltzailea eta ingurune birtuala sortu
 			14) searxInstalatu ;;
