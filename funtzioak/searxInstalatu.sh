@@ -11,7 +11,7 @@ function searxInstalatu ()
 		--title "Menu"\
 		--msgbox "Searx-en egoera konprobatzen..." 10 50
 
-	konprobaketa=`dpkg --get-selections | grep '^searx*'`
+	konprobaketa=`dpkg --get-selections | grep '^searx'`
 	konprobaDe=`dpkg --get-selections | grep '^searx.*deinstall$'`
 	# Konprobaketa aldagaian gordetzen da komando honen emaitza.
 
@@ -24,17 +24,27 @@ function searxInstalatu ()
 		 --title "Instalazioa"\
 		 --msgbox "SEARX paketea instalatuko da. Sakatu enter jarraitzeko." 10 50
 
-		#read
-		sudo apt install searx -y > /dev/null
+		read
+		sudo -H apt-get install -y \
+    	python3-dev python3-babel python3-venv \
+    	uwsgi uwsgi-plugin-python3 \
+    	git build-essential libxslt-dev zlib1g-dev libffi-dev libssl-dev \
+    	shellcheck > /dev/null
+
 
 
 	else
-		if [ -n "konprobaDe" ]
+		if [ -n "$konprobaDe" ]
 		then
 			dialog --title "Searx Instalatu"\
-			--msgbox "Searx instalatuko dakj. Sakatu enter jarraitzeko." 10 50
-			#read
-			sudo apt install searx -y > /dev/null
+			--msgbox "Searx instalatuko da. Sakatu enter jarraitzeko." 10 50
+			read
+			sudo -H apt-get install -y \
+	    python3-dev python3-babel python3-venv \
+	    uwsgi uwsgi-plugin-python3 \
+	    git build-essential libxslt-dev zlib1g-dev libffi-dev libssl-dev \
+	    shellcheck > /dev/null
+
 		else
 			dialog --title "Searx Instalatuta"\
 			--msgbox "Dagoeneko Searx instalatuta zenuen" 10 50
@@ -42,7 +52,7 @@ function searxInstalatu ()
 	fi
 
 	#Amaierako konprobazioak
-	konprobaketa=`dpkg --get-selections | grep '^searx*'`
+	konprobaketa=`dpkg --get-selections | grep '^searx'`
 	konprobaDe=`dpkg --get-selections | grep '^searx.*deinstall$'`
 	if [ -z "$konprobaketa" ] # Prozesuaren osteko konprobazioa
 	then	#Ez dago hutsik k1
@@ -57,6 +67,6 @@ function searxInstalatu ()
 
 	else	#Hutsik dago k1
 		dialog --title "--- Searx ---"\
-	 	--msgbox "SEARX paketea ez da instalatu.vxcv Arazo bat egon da." 10 50
+	 	--msgbox "SEARX paketea ez da instalatu. Arazo bat egon da." 10 50
 	fi
 }
