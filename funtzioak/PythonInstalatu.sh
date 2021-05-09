@@ -9,6 +9,9 @@
 
 function PythonInstalatu()
 {
+	dialog --backtitle "Python ingurune birtuala Instalatu"\
+	 --title "Menu"\
+	 --msgbox "Pythonen egoera konprobatzen..." 10 50
 
 	#konprobatu behar dugu virtualenv instalatuta dagoen edo ez
 	konprobaketa=`dpkg --get-selections | grep '^.*virtualenv*'`
@@ -44,7 +47,7 @@ function PythonInstalatu()
 	
 	konprobaketa=`dpkg --get-selections | grep '^.*virtualenv*'`
 	konprobaDe=`dpkg --get-selections | grep '^.*virtualenv.*deinstall$'`
-	if [ -z "$konprobaketa" ]
+	if [ -n "$konprobaketa" ]
 	then 
 		if [ -n "$konprobaDe" ]	# -n ren bidez konprobaDe hutsik ez dagoen begiratu
 		then	# Ez dago hutsik k2
@@ -52,7 +55,7 @@ function PythonInstalatu()
 		 	--msgbox "Pythhon paketea ez da instalatu. Arazo bat egon da." 10 50
 		else	# Hutsik dago k2
 			dialog --title "--- Python ---"\
-			--msgbox "Python paketea ondo instalatu da." 10 50
+			--msgbox "Python paketearen instalazioa amaitu da." 10 50
 		fi
 	else
 		dialog --title "---  Python ---"\
