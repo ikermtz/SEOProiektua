@@ -44,7 +44,7 @@ function searxInstalatu ()
 	#Amaierako konprobazioak
 	konprobaketa=`dpkg --get-selections | grep '^searx'`
 	konprobaDe=`dpkg --get-selections | grep '^searx.*deinstall$'`
-	if [ -z "$konprobaketa" ] # Prozesuaren osteko konprobazioa
+	if [ -n "$konprobaketa" ] # Prozesuaren osteko konprobazioa
 	then	#Ez dago hutsik k1
 		if [ -n "$konprobaDe" ]	# -n ren bidez konprobaDe hutsik ez dagoen begiratu
 		then	# Ez dago hutsik k2
@@ -52,7 +52,7 @@ function searxInstalatu ()
 		 	--msgbox "SEARX paketea ez da instalatu. Arazo bat egon da." 10 50
 		else	# Hutsik dago k2
 			dialog --title "--- Searx ---"\
-			--msgbox "SEARX paketea ondo instalatu da." 10 50
+			--msgbox "SEARX paketeren instalazio prozesua amaitu da." 10 50
 		fi
 
 	else	#Hutsik dago k1
