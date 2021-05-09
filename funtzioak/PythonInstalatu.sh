@@ -4,34 +4,35 @@
 
 
 ###########################################################
-#   Python ingurune birtual sortu
+#   12) Python ingurune birtual instalatu.
 ###########################################################
 
 function PythonInstalatu()
 {
 
 	#konprobatu behar dugu virtualenv instalatuta dagoen edo ez
-	konprobaketa=`dpkg --get-selections | grep virtualenv`
+	konprobaketa=`dpkg --get-selections | grep '^.*virtualenv*'`
+	konprobaDe=`dpkg --get-selections | grep '^.*virtualenv.*deinstall$'`
 	
 	if [ -z "$konprobaketa" ] #ez dagola instalatuta
 	then 
-		dialog --backtitle ""\
+		dialog --backtitle "Python Virtualenv Instalatu"\
 		 --title "--- PYTHON ---"\
 		 --msgbox "Python paketea instalatuko da. Sakatu enter jarraitzeko" 10 50
 		 
 		 read
 		 sudo apt-get install virtualenv -y > /dev/null
 		
-		konprobaketa=`dpkg --get-selections | grep virtualenv` 
-		if [ -n "$konprobaketa" ]
+	else
+		if [ -n "$konprobaDe" ]
 		then
-			dialog --backtitle ""\
-		 --title "--- PYTHON ---"\
-		 --msgbox "Python paketea instalatu da." 10 50
+			dialog --title "Python Instalatu"\
+		 	--msgbox "Python paketea instalatuko da. Sakatu enter jarraitzeko." 10 50
+			read
+			sudo apt-get install virtualenv -y > /dev/null
 		else
-			dialog --backtitle ""\
-		 --title "--- PYTHON ---"\
-		 --msgbox "Python paketea ez da instalatu." 10 50
+			dialog --title "Python Instalatuta"\
+		 	--msgbox "Python paketea instalatuta zenuen" 10 50
 		
 		fi
 	fi
@@ -40,31 +41,22 @@ function PythonInstalatu()
 	#:)
 	
 	
-	konprobaketa=`dpkg --get-selections | grep 'python3-virtualenv'`
 	
+	konprobaketa=`dpkg --get-selections | grep '^.*virtualenv*'`
+	konprobaDe=`dpkg --get-selections | grep '^.*virtualenv.*deinstall$'`
 	if [ -z "$konprobaketa" ]
 	then 
-	
-		dialog --backtitle ""\
-		 --title "--- PYTHON ---"\
-		 --msgbox "Python3-virtualenv paketea instalatuko da. Sakatu enter jarraitzeko" 10 50
-		 
-		 read
-		 sudo apt-get install python3-virtualenv -y > /dev/null
-		
-		konprobaketa=`dpkg --get-selections | grep 'python3-virtualenv'` 
-		if [ -n "$konprobaketa" ]
-		then
-			dialog --backtitle ""\
-		 --title "--- PYTHON ---"\
-		 --msgbox "Python-virtualenv paketea instalatu da." 10 50
-		else
-			dialog --backtitle ""\
-		 --title "--- PYTHON ---"\
-		 --msgbox "Python-virtaulenv paketea ez da instalatu." 10 50
-		
+		if [ -n "$konprobaDe" ]	# -n ren bidez konprobaDe hutsik ez dagoen begiratu
+		then	# Ez dago hutsik k2
+			dialog --title "--- Python ---"\
+		 	--msgbox "Pythhon paketea ez da instalatu. Arazo bat egon da." 10 50
+		else	# Hutsik dago k2
+			dialog --title "--- Python ---"\
+			--msgbox "Python paketea ondo instalatu da." 10 50
 		fi
-		
+	else
+		dialog --title "---  Python ---"\
+		--msgbox "Python pakete ez da instalatu. Arazo bat egon da." 10 50
 	fi 
 	
 	#if [ ! -f /var/www/html/pythonBirtual ]

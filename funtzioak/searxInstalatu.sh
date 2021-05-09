@@ -1,13 +1,18 @@
 #!/bin/bash
 
 ###########################################################
-#   14) SEARX INSTALATU                     
+#   14) SEARX Instalatu.                    
 ##########################################################
 
 
 function searxInstalatu ()
 {
+	dialog --backtitle "Searx Instalatu"\
+		--title "Menu"\
+		--msgbox "Searx-en egoera konprobatzen..." 10 50
+
 	konprobaketa=`dpkg --get-selections | grep '^searx'`
+	konprobaDe=`dpkg --get-selections | grep '^searx.*deinstall$'`
 	# Konprobaketa aldagaian gordetzen da komando honen emaitza.
 
 
@@ -15,31 +20,43 @@ function searxInstalatu ()
 	then 
 		# Hemen sartu bada, esan nahi du ez dagoela instalatuta.
 
-		dialog --backtitle ""\
-		 --title "--- SEARX ---"\
+		dialog --backtitle "Searx Instalatu"\
+		 --title "Instalazioa"\
 		 --msgbox "SEARX paketea instalatuko da. Sakatu enter jarraitzeko." 10 50
 
 		read
-		sudo apt install searx -y
+		sudo apt install searx -y > /dev/null
 
-		# instalatu eta gero berriro konprobatzen dugu ea instalatu den ala ez
-		# komando berdina egiten
-		konprobaketa=`dpkg --get-selections | grep '^searx'`
-
-		if [ -n "$konprobaketa" ] # konprobaketa aldagaian String-a luzeera > 0 bada...
-		then 
-		# Hemen sartu bada, esan nahi du instalatu dela.
-
-		dialog --title "--- SEARX ---"\
-		 --msgbox "SEARX paketea instalatu da."  10 50
 
 	else
-		dialog --title "--- SEARX ---"\
-		 --msgbox "SEARX paketea instalatzean arazo bat egon da." 10 50
+		if [ -n "konprobaDe" ]
+		then
+			dialog --title "Searx Instalatu"\
+			--msgbox "Searx instalatuko da. Sakatu enter jarraitzeko." 10 50
+			read
+			sudo apt install searx -y > /dev/null
+		else
+			dialog --title "Searx Instalatuta"\
+			--msgbox "Dagoeneko Searx instalatuta zenuen" 10 50
+		fi
 	fi
 
-	else
-		dialog --title "--- SEARX ---"\
-		 --msgbox "SEARX paketea instalatuta dago!" 10 50
+	#Amaierako konprobazioak
+	konprobaketa=`dpkg --get-selections | grep '^searx'`
+	konprobaDe=`dpkg --get-selections | grep '^searx.*deinstall$'`
+	if [ -z "$konprobaketa" ] # Prozesuaren osteko konprobazioa
+	then	#Ez dago hutsik k1
+		if [ -n "$konprobaDe" ]	# -n ren bidez konprobaDe hutsik ez dagoen begiratu
+		then	# Ez dago hutsik k2
+			dialog --title "--- Searx ---"\
+		 	--msgbox "SEARX paketea ez da instalatu. Arazo bat egon da." 10 50
+		else	# Hutsik dago k2
+			dialog --title "--- Searx ---"\
+			--msgbox "SEARX paketea ondo instalatu da." 10 50
+		fi
+
+	else	#Hutsik dago k1
+		dialog --title "--- Searx ---"\
+	 	--msgbox "SEARX paketea ez da instalatu.vxcv Arazo bat egon da." 10 50
 	fi
 }

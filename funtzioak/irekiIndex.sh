@@ -1,3 +1,12 @@
+#! usr/bin/bash
+
+###########################################################
+#   5) Ireki index.html
+###########################################################
+
+
+
+
 function irekiIndex(){
 	ipFiltratugabe=$(ip addr | grep -E "inet .*brd")
 	ipIaFiltratua=$(echo ${ipFiltratugabe:9:50})

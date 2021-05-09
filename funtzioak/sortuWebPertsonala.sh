@@ -1,3 +1,11 @@
+#! usr/bin/bash
+
+###########################################################
+#   6) Sortu Web Pertsonala.
+###########################################################
+
+
+
 function sortuWebPertsonala(){
 	sudo cp -r taldea* /var/www/html/
 

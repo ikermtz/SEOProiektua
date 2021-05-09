@@ -1,7 +1,7 @@
 #! usr/bin/bash
 
 ###########################################################
-#   1) Dena Desinstalatu               
+#   1) Desinstalatu eta ezabatu dena.   
 ###########################################################
 
 #source "$(dirname "$0")/funtzioak/instalatuta.sh"
@@ -14,35 +14,35 @@ function desinstalazioa(){
 
 	dialog --backtitle ""\
 		--title "Desinstalazioa"\
-		--msgbox "Sakatu enter paketak kentzeko" 10 50
+		--msgbox "Sakatu enter paketeak kentzeko" 10 50
 
 	read
 
-	#sudo apt-get remove  -y
+	sudo apt-get purge php* -y > /dev/null
 	dialog --backtitle ""\
 		--title "PHP"\
-		--msgbox "PHPko paketak desinstalatu dira" 10 50
+		--msgbox "PHPko paketeak desinstalatu dira" 10 50
 	read
 
 	#sudo apt-get remove  -y
 	dialog --backtitle ""\
 		--title "PHPbb3"\
-		--msgbox "PHPbb3ko paketak desinstalatu dira" 10 50
+		--msgbox "PHPbb3ko paketeak desinstalatu dira" 10 50
 	read
 
-	sudo apt-get remove apache2* -y
+	sudo apt-get remove apache2* -y > /dev/null
 	dialog --backtitle ""\
 		--title "Apache2"\
-		--msgbox "Apacheko paketak desinstalatu dira" 10 50
+		--msgbox "Apacheko paketeak desinstalatu dira" 10 50
 	read
 
-	#sudo apt-get remove  -y
+	sudo apt-get purge searx -y > /dev/null
 	dialog --backtitle ""\
 		--title "Searx"\
-		--msgbox "Searxeko paketak desinstalatu dira" 10 50
+		--msgbox "Searxeko paketeak desinstalatu dira" 10 50
 	read
 
-	sudo apt-get remove --auto-remove python3-virtualenv -y #Konprobatuta desins
+	sudo apt-get remove --auto-remove python3-virtualenv -y > /dev/null #Konprobatuta desins
 	dialog --backtitle ""\
 		--title "Python3 eta Virtualenv"\
 		--msgbox "Python ingurune birtuala desinstalatu da" 10 50

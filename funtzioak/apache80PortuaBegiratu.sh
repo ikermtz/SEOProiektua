@@ -1,3 +1,11 @@
+#! usr/bin/bash
+
+###########################################################
+#   4) Apacheren 80 portua begiratu.
+###########################################################
+
+
+
 function apache80PortuaBegiratu(){
 	begiratua=$(sudo netstat -anp | grep -E '80.*apache')
 

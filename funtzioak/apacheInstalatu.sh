@@ -1,16 +1,9 @@
-#konprobatu(){
-#	egoera=$(dpkg --get-selections | grep apache)
-#
-#
-#
-#	if [ -n "$egoera" ]
-#	then #[["$egoera" == *"install"* ]]
-#		echo 0
-#	else 
-#		echo 1
-#	fi;
-#
-#}
+#! usr/bin/bash
+
+###########################################################
+#   2) Apache Instalatu.  
+###########################################################
+
 
 function apacheInstalatu(){
 	dialog --backtitle "Apache Instalatu"\
@@ -20,7 +13,7 @@ function apacheInstalatu(){
 	#dpkg-ren bidez paketeak begriratuko ditugu, grep-ekin flitratuz. Hau, konpr aldagaietan gordez
 	konprobatu=`dpkg --get-selections | grep '^apache*'`
 	konprobaDe=`dpkg --get-selections | grep '^apache.*deinstall$'`
-	konpro01=0
+	#konpro01=0
 	
 	if [ -z "$konprobatu" ] # -z ren bidez konprobatu hutsa den bergiratzen da
 	then	# Hutsik Badago => Ez dago apache paketerik
@@ -29,15 +22,15 @@ function apacheInstalatu(){
 		 --msgbox "Apache instalatuko da. Sakatu enter jarraitzeko." 10 50
 		# --yesno "Apache ez dago instalatuta, instalatu nahi duzu?" 10 50
 		read
-		sudo apt install apache2 -y
+		sudo apt install apache2 -y > /dev/null
 
 	else	# Hutsik ez badago => Badaude apache paketeak
 		if [ -n "$konprobaDe" ]	# -n ren bidez konprobaDe hutsik ez dagoen begiratu
-		then	# Ez dago hutsikn => Paketeak daude baina desinstalatuta
+		then	# Ez dago hutsik => Paketeak daude baina desinstalatuta
 			dialog --title "Apache Instalatu"\
 		 	--msgbox "Apache instalatuko da. Sakatu enter jarraitzeko." 10 50
 			read 
-			sudo apt install apache2 -y	
+			sudo apt install apache2 -y > /dev/null
 		else
 			dialog --title "Apache Instalatuta"\
 		 	--msgbox "Dagoeneko Apache instalatuta zenuen" 10 50
@@ -62,7 +55,7 @@ function apacheInstalatu(){
 
 	else	#Hutsik dago k1
 		dialog --title "--- Apache ---"\
-	 	--msgbox "Apache2 paketea ez da instalatu.vxcv Arazo bat egon da." 10 50
+	 	--msgbox "Apache2 paketea ez da instalatu. Arazo bat egon da." 10 50
 	fi
 
 }

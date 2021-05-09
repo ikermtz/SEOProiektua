@@ -1,3 +1,13 @@
+#! /usr/bin/bash
+
+
+#! usr/bin/bash
+
+###########################################################
+#   11) PHPBB3 instalatu.
+###########################################################
+
+
 konprobatu(){
 	egoera=$(dpkg --get-selections | grep phpbb3)
 
