@@ -1,4 +1,9 @@
-#! /usr/bin/bash
+#! usr/bin/bash
+
+###########################################################
+#   2) Apache Instalatu.  
+###########################################################
+
 
 function apacheInstalatu(){
 	dialog --backtitle "Apache Instalatu"\

@@ -4,7 +4,7 @@
 
 
 ###########################################################
-#   Python ingurune birtual sortu
+#   12) Python ingurune birtual instalatu.
 ###########################################################
 
 function PythonInstalatu()

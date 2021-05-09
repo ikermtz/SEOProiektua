@@ -2,9 +2,9 @@
 #						path-a jarri (zein de ikusteko => which bash)
 
 ###########################################################
-#   5) PHP INSTALATU                       
+#   9) PHP Instalatu.                    
 ###########################################################
-#gonalo
+
 #source "$(dirname "$0")/funtzioak/instalatuta.sh"
 
 function phpInstalatu()

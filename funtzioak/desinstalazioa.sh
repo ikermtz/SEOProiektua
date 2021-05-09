@@ -1,7 +1,7 @@
 #! usr/bin/bash
 
 ###########################################################
-#   1) Dena Desinstalatu               
+#   1) Desinstalatu eta ezabatu dena.   
 ###########################################################
 
 #source "$(dirname "$0")/funtzioak/instalatuta.sh"
