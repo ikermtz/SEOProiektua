@@ -36,7 +36,7 @@ function desinstalazioa(){
 		--msgbox "Apacheko paketak desinstalatu dira" 10 50
 	read
 
-	#sudo apt-get remove  -y
+	sudo apt-get purge searx -y > /dev/null
 	dialog --backtitle ""\
 		--title "Searx"\
 		--msgbox "Searxeko paketak desinstalatu dira" 10 50

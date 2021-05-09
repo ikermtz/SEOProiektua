@@ -25,7 +25,7 @@ function searxInstalatu ()
 		 --msgbox "SEARX paketea instalatuko da. Sakatu enter jarraitzeko." 10 50
 
 		read
-		sudo apt install searx -y
+		sudo apt install searx -y > /dev/null
 
 
 	else
@@ -34,7 +34,7 @@ function searxInstalatu ()
 			dialog --title "Searx Instalatu"\
 			--msgbox "Searx instalatuko da. Sakatu enter jarraitzeko." 10 50
 			read
-			sudo apt install searx -y
+			sudo apt install searx -y > /dev/null
 		else
 			dialog --title "Searx Instalatuta"\
 			--msgbox "Dagoeneko Searx instalatuta zenuen" 10 50
