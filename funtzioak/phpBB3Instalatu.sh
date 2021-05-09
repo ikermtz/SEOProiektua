@@ -43,9 +43,7 @@ function phpBB3Instalatu(){
 
 	else 
 		if[ -n "$egoeraDe" ]
-		then 
-
-			#ez dago hutsik, paketeak desinstalatuta daude
+		then #ez dago hutsik, paketeak desinstalatuta daude
 			dialog --title "phpBB3 Instalatu"\
 			--msgbox "PHPBB3 paketea instalatuko da. Sakatu enter jarraitzeko" 10 50
 
