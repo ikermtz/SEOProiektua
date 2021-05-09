@@ -7,10 +7,24 @@
 
 function searxAbiarazi ()
 {
-	git clone https://github.com/asciimoo/searx.git > /dev/null
-	sed -i 's/ultrasecretkey/1234/g' searx/searx/settings.yml
-	sudo python3 setup.py install
-	python3 searx/webapp.py > /dev/null
+	git clone https://github.com/asciimoo/searx.git > /dev/null &
+	pid=$!
+	wait "$pid"
+
+	sed -i 's/ultrasecretkey/1234/g' searx/searx/settings.yml > /dev/null
+
+	sleep 1s
+
+	cd /home/duxon/Downloads/seo/proiektua/searx
+
+	make install > /dev/null
+
+
+	python3 searx/setup.py install &
+	ID=$!
+	wait "$ID"
+
+	python3 searx/webapp.py 
 
 	dialog --backtitle "Searx habiarazi"\
 		--title "Menu"\
@@ -20,4 +34,6 @@ function searxAbiarazi ()
 	case $response in
 	   0) firefox 127.0.0.1:8888;;
 	esac
+
+
 }
