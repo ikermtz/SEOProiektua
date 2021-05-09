@@ -8,7 +8,7 @@
 ###########################################################
 
 
-konprobatu(){
+function phpBB3Instalatu(){
 	egoera= `dpkg --get-selections | grep '^phpBB*'`
 	egoeraDe= `dpkg --get-selections | grep '^phpBB.*deinstall$'`
 
