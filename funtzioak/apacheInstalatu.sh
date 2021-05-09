@@ -22,7 +22,7 @@ function apacheInstalatu(){
 		 --msgbox "Apache instalatuko da. Sakatu enter jarraitzeko." 10 50
 		# --yesno "Apache ez dago instalatuta, instalatu nahi duzu?" 10 50
 		read
-		sudo apt install apache2 -y > /dev/null
+		sudo apt-get install apache2 -y > /dev/null
 
 	else	# Hutsik ez badago => Badaude apache paketeak
 		if [ -n "$konprobaDe" ]	# -n ren bidez konprobaDe hutsik ez dagoen begiratu
@@ -30,7 +30,7 @@ function apacheInstalatu(){
 			dialog --title "Apache Instalatu"\
 		 	--msgbox "Apache instalatuko da. Sakatu enter jarraitzeko." 10 50
 			read 
-			sudo apt install apache2 -y > /dev/null
+			sudo apt-get install apache2 -y > /dev/null
 		else
 			dialog --title "Apache Instalatuta"\
 		 	--msgbox "Dagoeneko Apache instalatuta zenuen" 10 50
@@ -42,7 +42,7 @@ function apacheInstalatu(){
 	#Amaierako konprobazioak, ea instalazioak ondo joan diren
 	konprobatu=`dpkg --get-selections | grep '^apache*'`
 	konprobaDe=`dpkg --get-selections | grep '^apache.*deinstall$'`
-	if [ -z "$konprobaketa" ] # Prozesuaren osteko konprobazioa
+	if [ -n "$konprobatu" ] # Prozesuaren osteko konprobazioa
 	then	#Ez dago hutsik k1
 		if [ -n "$konprobaDe" ]	# -n ren bidez konprobaDe hutsik ez dagoen begiratu
 		then	# Ez dago hutsik k2
@@ -50,7 +50,7 @@ function apacheInstalatu(){
 		 	--msgbox "Apache2 paketea ez da instalatu. Arazo bat egon da." 10 50
 		else	# Hutsik dago k2
 			dialog --title "--- Apache ---"\
-			--msgbox "Apache2 paketea ondo instalatu da." 10 50
+			--msgbox "Apache2 paketeatearen instalazioa amaitu da." 10 50
 		fi
 
 	else	#Hutsik dago k1

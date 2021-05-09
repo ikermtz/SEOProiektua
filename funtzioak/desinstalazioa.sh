@@ -18,6 +18,7 @@ function desinstalazioa(){
 
 	read
 
+	sudo apt-get purge libapache2 -y > /dev/null
 	sudo apt-get purge php* -y > /dev/null
 	dialog --backtitle ""\
 		--title "PHP"\
