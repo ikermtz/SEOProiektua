@@ -11,7 +11,7 @@ function searxInstalatu ()
 		--title "Menu"\
 		--msgbox "Searx-en egoera konprobatzen..." 10 50
 
-	konprobaketa=`dpkg --get-selections | grep '^searx'`
+	konprobaketa=`dpkg --get-selections | grep '^searx*'`
 	konprobaDe=`dpkg --get-selections | grep '^searx.*deinstall$'`
 	# Konprobaketa aldagaian gordetzen da komando honen emaitza.
 
@@ -24,7 +24,7 @@ function searxInstalatu ()
 		 --title "Instalazioa"\
 		 --msgbox "SEARX paketea instalatuko da. Sakatu enter jarraitzeko." 10 50
 
-		read
+		#read
 		sudo apt install searx -y > /dev/null
 
 
@@ -32,8 +32,8 @@ function searxInstalatu ()
 		if [ -n "konprobaDe" ]
 		then
 			dialog --title "Searx Instalatu"\
-			--msgbox "Searx instalatuko da. Sakatu enter jarraitzeko." 10 50
-			read
+			--msgbox "Searx instalatuko dakj. Sakatu enter jarraitzeko." 10 50
+			#read
 			sudo apt install searx -y > /dev/null
 		else
 			dialog --title "Searx Instalatuta"\
@@ -42,7 +42,7 @@ function searxInstalatu ()
 	fi
 
 	#Amaierako konprobazioak
-	konprobaketa=`dpkg --get-selections | grep '^searx'`
+	konprobaketa=`dpkg --get-selections | grep '^searx*'`
 	konprobaDe=`dpkg --get-selections | grep '^searx.*deinstall$'`
 	if [ -z "$konprobaketa" ] # Prozesuaren osteko konprobazioa
 	then	#Ez dago hutsik k1
