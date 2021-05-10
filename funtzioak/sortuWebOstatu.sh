@@ -13,7 +13,7 @@ function sortuWebOstatu(){
 		sudo mkdir /var/www/foroa
 	fi
 
-	if [ -z '$konprobaketaS' ]
+	if [ -z '$egoeras' ]
 
 		sudo mkdir /var/www/foroa/public
 	fi
