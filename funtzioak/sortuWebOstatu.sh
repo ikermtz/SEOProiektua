@@ -21,13 +21,11 @@ function sortuWebOstatu(){
 	sudo chgrp www-data /var/www/foroa #baimenak eman foroa taldean 
 	sudo usermod -a -G www-data $USER #erabiltzailea taldean sartu
 
-	#baimenen esleipena
 	sudo chmod -R 775 /var/www/foroa
 	sudo chmod -R g+s /var/www/foroa
 	sudo chown -R $USER /var/www/foroa #jabetza eman erabiltzaileari
 
 
-	#konfigurazio fitxategiak
 	sudo cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/foroa.conf
 	sudo sed -i 's%:80%:8080%g' /etc/apache2/sites-available/foroa.conf
 	sudo sed -i 's%html%foroa/public%g' /etc/apache2/sites-available/foroa.conf
