@@ -75,10 +75,10 @@ do
 			1) desinstalazioa ;; # Desinstalatu eta ezabatu dena.
 			2) apacheInstalatu;;
 			3) apacheAbiarazi;;
-			4) apache80PortuaBegiratu;;
+			4) apache80PortuaBegiratu ;;
 			5) irekiIndex;;
-			6) sortuWebPertsonala;;
-			7) sortuWebOstatu;;
+			6) sortuWebPertsonala ;;
+			7) sortuWebOstatu ;;
 			8) apache8080PortuaBegiratu;;
 			9) phpInstalatu ;;
 			10) PHPTestatu ;;

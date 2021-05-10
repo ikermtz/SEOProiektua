@@ -1,4 +1,4 @@
-#! usr/bin/bash
+#!usr/bin/bash
 
 ###########################################################
 #   8) Apacheren 8080 portua begiratu.
