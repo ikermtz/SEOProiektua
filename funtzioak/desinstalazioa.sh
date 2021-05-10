@@ -43,7 +43,9 @@ function desinstalazioa(){
 		--msgbox "Searxeko paketeak desinstalatu dira" 10 50
 	read
 
+
 	sudo apt-get remove --auto-remove python3-virtualenv -y > /dev/null #Konprobatuta desins
+		
 	dialog --backtitle ""\
 		--title "Python3 eta Virtualenv"\
 		--msgbox "Python ingurune birtuala desinstalatu da" 10 50
