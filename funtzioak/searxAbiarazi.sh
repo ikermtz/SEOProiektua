@@ -15,7 +15,7 @@ function searxAbiarazi ()
 
 	sleep 1s
 
-	cd /home/duxon/Downloads/seo/proiektua/searx
+	cd ./searx
 
 	make install > /dev/null
 
