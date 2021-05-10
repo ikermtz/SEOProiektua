@@ -6,8 +6,8 @@
 
 function sortuWebOstatu(){
 #weba kudeatzeko katalogoaren egikariketa
-	konprobaketa=`ls /var/www | grep -c 'foroa'`
-	konprobaketa=`ls /var/www/foroa | grep -c 'public'
+	egoera=`ls /var/www | grep -c 'foroa'`
+	egoeras=`ls /var/www/foroa | grep -c 'public'
 	if [ -z '$egoera' ]
 	then
 		sudo mkdir /var/www/foroa
@@ -39,8 +39,8 @@ function sortuWebOstatu(){
 	sudo sed -i '34i </Directory>' /etc/apache2/sites-available/foroa.conf
 
 #apache portuen irekiera
-	egoera=`grep -c 'Listen 8080' /etc/apache2/ports.conf`
-	if [ -z '$egoera' ]
+	egoerak=`grep -c 'Listen 8080' /etc/apache2/ports.conf`
+	if [ -z '$egoerak' ]
 	then
 		sudo sed -i 's%Listen 80%Listen 8080%' /etc/apache2/ports.conf
 	fi
