@@ -7,12 +7,12 @@ function sortuWebOstatu(){
 	#weba kudeatzeko katalogoaren egikariketa
 	konprobaketa1=$(ls /var/www | grep -c 'foroa')
 	konprobaketa2=$(ls /var/www/foroa | grep -c 'public')
-	if [ -z '$konprobaketa1' ]
+	if [ $konprobaketa1 -eq 0 ]
 	then
 		sudo mkdir /var/www/foroa
-	fi;
+	fi
 
-	if [ -z '$konprobaketa2' ]
+	if [ $konprobaketa2 -eq 0 ]
 	then
 
 		sudo mkdir /var/www/foroa/public
@@ -40,7 +40,7 @@ function sortuWebOstatu(){
 	egoera=$(grep -c 'Listen 8080' /etc/apache2/ports.conf)
 	if [ -z '$egoera' ]
 	then
-		sudo sed -i 's%Listen 80%Listen 8080%' /etc/apache2/ports.conf
+		sed '4iListen 8080' /etc/apache2/ports.conf | sudo tee /etc/apache2/ports.conf > /dev/null
 	fi
 
 	#virtualHost berria bideratu
@@ -56,5 +56,10 @@ function sortuWebOstatu(){
 	#egiaztaketa
 	touch /var/www/foroa/public/index.html
 	echo "<title> Konprobaketa </title>" | sudo tee /var/www/foroa/public/index.html 1> /dev/null
-	firefox http://localhost:8080/index.html
+
+	ipFiltratugabe=$(ip addr | grep -E "inet .*brd")
+	ipIaFiltratua=$(echo ${ipFiltratugabe:9:50})
+	ip=$(echo $ipIaFiltratua | cut -d"/" -f1)
+
+	firefox http://"$ip":8080/foroa/public/index.html
 }
