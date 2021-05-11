@@ -5,25 +5,28 @@
 
 function sortuWebOstatu(){
 	#weba kudeatzeko katalogoaren egikariketa
-	konprobaketa1=$(ls /var/www | grep -c 'foroa')
-	konprobaketa2=$(ls /var/www/foroa | grep -c 'public')
+	konprobaketa1=$(ls /var/www/html | grep -c 'foroa')
+
 	if [ $konprobaketa1 -eq 0 ]
 	then
-		sudo mkdir /var/www/foroa
+		sudo mkdir /var/www/html/foroa
 	fi
+	
+	konprobaketa2=$(ls /var/www/html/foroa | grep -c 'public')
+
 
 	if [ $konprobaketa2 -eq 0 ]
 	then
 
-		sudo mkdir /var/www/foroa/public
+		sudo mkdir /var/www/html/foroa/public
 	fi
 
-	sudo chgrp www-data /var/www/foroa #baimenak eman foroa taldean 
+	sudo chgrp www-data /var/www/html/foroa #baimenak eman foroa taldean 
 	sudo usermod -a -G www-data $USER #erabiltzailea taldean sartu
 
-	sudo chmod -R 775 /var/www/foroa
-	sudo chmod -R g+s /var/www/foroa
-	sudo chown -R $USER /var/www/foroa #jabetza eman erabiltzaileari
+	sudo chmod -R 775 /var/www/html/foroa
+	sudo chmod -R g+s /var/www/html/foroa
+	sudo chown -R $USER /var/www/html/foroa #jabetza eman erabiltzaileari
 
 
 	sudo cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/foroa.conf
@@ -37,7 +40,7 @@ function sortuWebOstatu(){
 	sudo sed -i '34i </Directory>' /etc/apache2/sites-available/foroa.conf
 
 	#apache portuen irekiera
-	egoera=$(grep -c 'Listen 8080' /etc/apache2/ports.conf)
+	egoera=$(grep 'Listen 8080' /etc/apache2/ports.conf)
 	if [ -z '$egoera' ]
 	then
 		sed '4iListen 8080' /etc/apache2/ports.conf | sudo tee /etc/apache2/ports.conf > /dev/null
@@ -54,8 +57,8 @@ function sortuWebOstatu(){
 
 
 	#egiaztaketa
-	touch /var/www/foroa/public/index.html
-	echo "<title> Konprobaketa </title>" | sudo tee /var/www/foroa/public/index.html 1> /dev/null
+	touch /var/www/html/foroa/public/index.html
+	echo "<title> Konprobaketa </title>" | sudo tee /var/www/html/foroa/public/index.html 1> /dev/null
 
 	ipFiltratugabe=$(ip addr | grep -E "inet .*brd")
 	ipIaFiltratua=$(echo ${ipFiltratugabe:9:50})
