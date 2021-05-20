@@ -38,7 +38,7 @@ FITX_AUK_MENU="temp/aukerak"
 ### Programaren Hasiera ###
 menuAukerapPal=0
 
-while test $menuAukerapPal -ne 17
+while test $menuAukerapPal -ne 22
 do
 	#Menua bistaratu	
 	dialog --backtitle "Web Aplikazioen Instalazioa 2021 - SEO" --title "Web Aplikazioen Instalazioa" \
@@ -59,7 +59,12 @@ do
 			14 "searx instalatu"\
 			15 "searx abiarazi"\
 			16 "Apache-n hamar URL atzituenak"\
-			17 "Irten. :)" \
+			17 ":)" \
+			18 ""\
+			19 ""\
+			20 "azterketa"\
+			21 ""\
+			22 "Irten"\
 			2> $FITX_AUK_MENU
 
 	if test $? -eq 0 
@@ -88,6 +93,11 @@ do
 			14) searxInstalatu ;;
 			15) searxAbiarazi ;;
 			16) urlAtzituenak ;; # Apache-n hamar URL atzituenak
+			17) ;;
+			18) ;;
+			19) ;;
+			20) azterketa ;;
+			21) ;;
 			*) ;;
 		esac #Aukeratutako futzio konkretuaren amaiera.
 	else
