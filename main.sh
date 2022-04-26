@@ -1,33 +1,34 @@
 #########################################
 #			Web Aplikazioa				#
-#	SEO Proiektua 2o lauhil. 2021		#
-#  Egileak: Martin Amezola				#
-#			Andoni Olabarria			#
-#			Jon Quintano				#
-#			Unai Gonzalez				#
-#			Gaizka Zuazo 				#
-#										#
+#	SEO Proiektua 2. lauhil. 2022				#
+#  	Egileak: Iker Martinez-Ayo				#
+#		 Imanol Ganzedo					#
+#		 Iker Mugika					#
+#		 Gorka del Rio					#
+#								#
 #########################################
 
-#Beste fitxategietatik funztzioak inportatu
-. ./funtzioak/desinstalazioa.sh
-. ./funtzioak/apacheInstalatu.sh
-. ./funtzioak/apacheAbiarazi.sh
-. ./funtzioak/apache80PortuaBegiratu.sh
-. ./funtzioak/irekiIndex.sh
-. ./funtzioak/sortuWebPertsonala.sh
-. ./funtzioak/sortuWebOstatu.sh
-. ./funtzioak/apache8080PortuaBegiratu.sh
-. ./funtzioak/PHPInstalatu.sh
-. ./funtzioak/PHPTestatu.sh
-. ./funtzioak/phpBB3Instalatu.sh
-. ./funtzioak/PythonInstalatu.sh
-. ./funtzioak/searxHasieratu.sh
-. ./funtzioak/searxInstalatu.sh
-. ./funtzioak/searxAbiarazi.sh
-. ./funtzioak/urlAtzituenak.sh
-
-
+#Beste fitxategietatik funztzioak inportatu#
+. ./fitxategiak2022/1apacheInstalatu.sh
+. ./fitxategiak2022/2apacheAbiarazi.sh
+. ./fitxategiak2022/3apache80PortuaBegiratu.sh
+. ./fitxategiak2022/4irekiIndex.sh
+. ./fitxategiak2022/5sortuWebPertsonala.sh
+. ./fitxategiak2022/6sortuWebOstatu.sh
+. ./fitxategiak2022/7virtualHostCheck.sh
+. ./fitxategiak2022/8PHPInstalatu.sh
+. ./fitxategiak2022/9PHPTestatu.sh
+. ./fitxategiak2022/10pythonInguruneVirtualaSortu.sh
+. ./fitxategiak2022/11ubuntuPaketeakInsatalatu.sh
+. ./fitxategiak2022/12pythonLiburutegiak.sh
+. ./fitxategiak2022/13LagunTestInstalatu.sh
+. ./fitxategiak2022/14jabetzaWWW.sh
+. ./fitxategiak2022/15checkWebprocess.sh
+. ./fitxategiak2022/16aplikazioaBistaratu.sh
+. ./fitxategiak2022/17apacheLog.sh
+. ./fitxategiak2022/18.sh
+. ./fitxategiak2022/19sshSaiakeraKontrola.sh
+. ./fitxategiak2022/20irten.sh
 
 
 
